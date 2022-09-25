@@ -114,10 +114,11 @@ $messages = [
 
     'detail_title' => '{title}',
     'detail_description' => '{description}',
-    'detail_keywords' => '{description}',
+    'detail_keywords' => '{title} {description}',
     
-
+    'download' => 'download',
 	'related' => 'related books',
+    'related_keywords' => 'related keywords',
 
 	'page' => 'page',
     'no_data' => '- No Data -',
@@ -157,20 +158,17 @@ class Pagination
     }
 }
 
-function setMetas(&$content, $name, $value, $page)
+function setMetas(&$messages, $index, $data)
 {
-    $content->og_h1            = str_replace('{'.$name.'}', $value, $content->og_h1);
-    $content->og_title         = str_replace('{'.$name.'}', $value, $content->og_title);
-    $content->og_description   = str_replace('{'.$name.'}', $value, $content->og_description);
-    $content->og_keywords      = str_replace('{'.$name.'}', $value, $content->og_keywords);
-    
-    $content->og_h1            = str_replace('{page}', $page > 1 ? 'page' . $page : '', $content->og_h1);
-    $content->og_title         = str_replace('{page}', $page > 1 ? 'page' . $page : '', $content->og_title);
-    $content->og_description   = str_replace('{page}', $page > 1 ? 'page' . $page : '', $content->og_description);
-    $content->og_keywords      = str_replace('{page}', $page > 1 ? 'page' . $page : '', $content->og_keywords);
-
-    $content->og_description   = substr( strip_tags($content->og_description), 0, 288);
-    $content->og_keywords      = str_replace(" ", ",", $content->og_keywords);
+    $meta_keys = ['title','description','keywords'];
+    $meta_data = new stdClass;
+    foreach($meta_keys as $key) {
+        $meta_data->{$index.$key} = $messages[$index.$key];
+        foreach($data as $data_key => $data_value)
+            $meta_data->{$index.$key} = str_replace('{'.$data_key.'}', $data_value, $meta_data->{$index.$key});
+    }
+    $meta_data->{$index.'keywords'} = slug($meta_data->{$index.'keywords'},',');
+    return $meta_data;
 }
 
 function encode($id)
@@ -237,7 +235,6 @@ function get_env($index)
     }
     return false;
 }
-
 // echo get_env('APP_ENV'); die();
 
 $_SERVER['REQUEST_SCHEME'] = 'http';

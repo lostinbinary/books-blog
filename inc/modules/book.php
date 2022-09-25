@@ -9,6 +9,10 @@ class Book
         $this->db_handle = $db_handle;
         foreach($post as $key => $value)
             $this->{$key} = $value;
+        
+        $this->path = $this->path();
+        $this->title = mb_convert_encoding($this->title, 'UTF-8', 'UTF-8');
+        $this->description = mb_convert_encoding($this->description, 'UTF-8', 'UTF-8');
     }
 
     public function path()
@@ -18,7 +22,7 @@ class Book
 
     public function relateds()
     {
-        $books = $this->db_handle->get_query("SELECT * FROM israelpdf1_db WHERE MATCH(title) AGAINST('$this->title') ORDER BY id DESC LIMIT 8");
+        $books = $this->db_handle->get_query("SELECT * FROM ".get_env('TABLE_LINKS')." WHERE MATCH(title) AGAINST('$this->title') ORDER BY id DESC LIMIT 20");
             
         foreach($books as &$book)
             $book = new Book($this->db_handle, $book);
@@ -28,7 +32,7 @@ class Book
 
     public function related_keywords()
     {
-        $keywords = $this->db_handle->get_query("SELECT * FROM israelpdf1_key WHERE MATCH(keyword) AGAINST('$this->title') ORDER BY id DESC");
+        $keywords = $this->db_handle->get_query("SELECT * FROM ".get_env('TABLE_KEYWORDS')." WHERE MATCH(keyword) AGAINST('$this->title') ORDER BY id DESC LIMIT 20");
         return $keywords;
     }
 }

@@ -31,10 +31,10 @@ class Cache
         return json_decode($data);
     }
 
-    function setCache($data)
+    function set($data)
     {
         if($this->caching == false) return false;
-        $json = json_encode($data);
+        $json = json_encode( utf8ize($data), JSON_UNESCAPED_UNICODE);
         $fh = fopen($this->cacheName, 'w');
         fwrite($fh, $json);
         fclose($fh);
@@ -49,6 +49,25 @@ class Cache
     }
 }
 
+function utf8ize($d)
+{
+    if (is_array($d)) {
+        foreach ($d as $k => $v) {
+            unset($d[$k]);
+            $d[utf8ize($k)] = utf8ize($v);
+        }
+    } else if (is_object($d)) {
+        $objVars = get_object_vars($d);
+        foreach($objVars as $key => $value) {
+            $d->$key = utf8ize($value);
+        }       
+    } else if (is_string ($d)) {
+        // return iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($d));
+        return mb_convert_encoding($d, "UTF-8", "UTF-8");
+    }
+    return $d;
+}
+
 $cache = new Cache;
 $cache->cachetime = '1 minutes';
-$cache->caching = false;
+$cache->caching = get_env('CACHE') === 'true' ? true : false;

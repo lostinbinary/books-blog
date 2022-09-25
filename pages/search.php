@@ -6,31 +6,36 @@ include 'inc/cache.php';
 include 'inc/modules/book.php';
 
 $data = new Stdclass;
+$data->search_text = '';
 $data->pagination = new Pagination;
 	
 if ($cache->isCached()) {
 	$data = $cache->getCache();
+    // echo "<pre>"; print_r($data);
 } else {
+    $data->pagination->setLimit(20);
     if(isset($page) && !empty($page))
         $data->pagination->setPage( intVal($page) );
 
-    $search_text = str_replace('-', ' ', urldecode($search_text));
+    $data->search_text = str_replace('-', ' ', urldecode($search_text));
     
     $WHERE = "WHERE MATCH(title) AGAINST(?)";
     // get books
-    $books = $db_handle->get_query("SELECT * FROM israelpdf1_db 
+    $data->books = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_LINKS')." 
         $WHERE
         ORDER BY id DESC 
-        LIMIT {$data->pagination->offset}, {$data->pagination->limit}",[$search_text]);
+        LIMIT {$data->pagination->offset}, {$data->pagination->limit}",[$data->search_text]);
         
-    foreach($books as &$book)
+    foreach($data->books as &$book)
         $book = new Book($db_handle, $book);
-
+    
     // pagination end
-    $total = $db_handle->get_query("SELECT COUNT(*) as total FROM israelpdf1_db $WHERE", [$search_text], true)->total;
+    $total = $db_handle->get_query("SELECT COUNT(*) as total FROM ".get_env('TABLE_LINKS')." $WHERE", [$data->search_text], true)->total;
     $data->pagination->update($total);
 
-    $related_keywords = $db_handle->get_query("SELECT * FROM israelpdf1_key WHERE MATCH(keyword) AGAINST (?)",[$search_text]);
+    $related_keywords = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_KEYWORDS')." WHERE MATCH(keyword) AGAINST (?) LIMIT 20",[$data->search_text]);
+    
+    $cache->set($data);
 }
 
 ?>
@@ -39,7 +44,6 @@ if ($cache->isCached()) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <title><?= $messages['index_title'] . (isset($page)?" - $messages[page] $page":'') ?></title>
         <meta name="og:description" content="<?= $messages['index_description'] ?>"/>
         <meta name="og:keywords" content="<?= $messages['index_keywords'] ?>" />
@@ -49,8 +53,6 @@ if ($cache->isCached()) {
         <link rel="icon" type="image/png" href="/public/uploads/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-16x16.png" sizes="16x16">
         <link rel="canonical" href="<?="$_SERVER[REQUEST_SCHEME]://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"?>" />
-        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu:700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/common.scss/common.css" />
         <link rel="stylesheet" href="/assets/css/detail.scss/detail.css" />
         <style>
@@ -62,13 +64,15 @@ if ($cache->isCached()) {
         <?php require_once('layouts/header.php'); ?>
 
         <div class="forgottenn-centered-text">
-        <?= preg_replace('/{count}/i', number_format($data->pagination->rows_count), $messages['index_p']) ?>
+            <h1>Search result: <?= $data->search_text ?></h1>
+        <?= preg_replace('/{count}/i', number_format($data->pagination->rows_count), $messages['index_p'])
+            . (isset($page)?" - $messages[page] $page":'') ?>
         </div>
         <div class="forgottenn-container">
             <div>
                 <div class="forgottenn-books-list">
-                    <?php foreach($books as $book): ?>
-                        <a href="<?= $book->path() ?>">
+                    <?php foreach($data->books as $book): ?>
+                        <a href="<?= $book->path ?>">
                             <div>
                             <div><?= $book->title?></div>
                             <p><?= $book->description ?></p>
@@ -84,7 +88,7 @@ if ($cache->isCached()) {
 
            
             <div class="forgottenn-keywords">
-            <h2>related links</h2>
+            <h2><?= $messages['related_keywords'] ?></h2>
             <div>
                 <?php foreach($related_keywords as $related_keyword): ?>
                     <a href="/s/<?= slug($related_keyword->keyword) ?>"><?= $related_keyword->keyword ?></a>

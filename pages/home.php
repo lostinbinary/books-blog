@@ -11,20 +11,23 @@ $data->pagination = new Pagination;
 if ($cache->isCached()) {
 	$data = $cache->getCache();
 } else {
+    $data->pagination->setLimit(20);
     if(isset($page) && !empty($page))
         $data->pagination->setPage( intVal($page) );
 
     // get books
-    $books = $db_handle->get_query("SELECT * FROM israelpdf1_db 
+    $data->books = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_LINKS')." 
         ORDER BY id DESC 
         LIMIT {$data->pagination->offset}, {$data->pagination->limit}");
         
-    foreach($books as &$book)
+    foreach($data->books as &$book)
         $book = new Book($db_handle, $book);
 
     // pagination end
-    $total = $db_handle->get_query("SELECT COUNT(*) as total FROM israelpdf1_db", [], true)->total;
+    $total = $db_handle->get_query("SELECT COUNT(*) as total FROM ".get_env('TABLE_LINKS')."", [], true)->total;
     $data->pagination->update($total);
+
+    $cache->set($data);
 }
 
 ?>
@@ -33,7 +36,6 @@ if ($cache->isCached()) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <title><?= $messages['index_title'] . (isset($page)?" - $messages[page] $page":'') ?></title>
         <meta name="og:description" content="<?= $messages['index_description'] ?>"/>
         <meta name="og:keywords" content="<?= $messages['index_keywords'] ?>" />
@@ -43,8 +45,6 @@ if ($cache->isCached()) {
         <link rel="icon" type="image/png" href="/public/uploads/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-16x16.png" sizes="16x16">
         <link rel="canonical" href="<?="$_SERVER[REQUEST_SCHEME]://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"?>" />
-        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu:700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/common.scss/common.css" />
         <style>
             .pagination{display:flex;justify-content:center;margin:20px 0}.pagination>ul{display:flex;align-items:center;flex-wrap:wrap}.pagination>ul li{margin:5px;list-style-type: none}.pagination>ul li a{display:inline-flex;justify-content:center;align-items:center;padding:10px 20px;background-color:#fff;border:1px solid #606060;font-size:1.2rem;color:#606060;cursor:pointer}.pagination>ul li .active_pag{background-color:rgba(0,0,0,.1)}
@@ -55,13 +55,14 @@ if ($cache->isCached()) {
         <?php require_once('layouts/header.php'); ?>
 
         <div class="forgottenn-centered-text">
-        <?= preg_replace('/{count}/i', number_format($data->pagination->rows_count), $messages['index_p']) ?>
+        <?= preg_replace('/{count}/i', number_format($data->pagination->rows_count), $messages['index_p']) 
+            . (isset($page)?" - $messages[page] $page":'') ?>
         </div>
         <div class="forgottenn-container">
             <div>
                 <div class="forgottenn-books-list">
-                    <?php foreach($books as $book): ?>
-                        <a href="<?= $book->path() ?>">
+                    <?php foreach($data->books as $book): ?>
+                        <a href="<?= $book->path ?>">
                             <div>
                             <div><?= $book->title?></div>
                             <p><?= $book->description ?></p>

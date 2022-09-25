@@ -20,7 +20,7 @@ class DBConnect
         $this->user     = get_env('DB_USERNAME');
         $this->password = get_env('DB_PASSWORD');
         $this->database = get_env('DB_DATABASE');
-        $this->db = new PDO("mysql:host=$this->host;dbname=$this->database", $this->user, $this->password) or die("Cannot connect to mySQL.");
+        $this->db = new PDO("mysql:host=$this->host;dbname=$this->database;charset=utf8", $this->user, $this->password) or die("Cannot connect to mySQL.");
         return $this->db;
     }
 
