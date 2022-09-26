@@ -1,0 +1,149 @@
+.faceddd-single-image {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  grid-gap: 30px !important;
+  margin-bottom: 40px; }
+  @media (max-width: 720px) {
+    .faceddd-single-image {
+      grid-template-columns: 1fr !important; } }
+  .faceddd-single-image > span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 5px;
+    height: 340px;
+    max-width: 400px;
+    max-height: 340px;
+    box-shadow: 1px 1px 5px #fff; }
+    .faceddd-single-image > span img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center; }
+  .faceddd-single-image > div {
+    order: -1;
+    display: flex !important;
+    height: inherit !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    padding: 7px 0; }
+    .faceddd-single-image > div > h1,
+    .faceddd-single-image > div > h2,
+    .faceddd-single-image > div > h3,
+    .faceddd-single-image > div > h4,
+    .faceddd-single-image > div > h5,
+    .faceddd-single-image > div > h6 {
+      margin-bottom: 15px; }
+    .faceddd-single-image > div > strong {
+      display: inline-block;
+      margin-bottom: 15px;
+      font-size: 1rem; }
+    .faceddd-single-image > div button {
+      display: inline-flex;
+      flex-direction: column;
+      border: none;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 5px;
+      background-color: #333; }
+      .faceddd-single-image > div button span {
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: bold; }
+
+.faceddd-single-text > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; }
+  .faceddd-single-text > div > span {
+    display: block;
+    border-bottom: 1px solid #333;
+    font-weight: bold;
+    font-size: 14px; }
+  .faceddd-single-text > div > div {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 5px 15px;
+    font-size: 13px; }
+  .faceddd-single-text > div > p {
+    font-size: 14px;
+    max-width: 1000px; }
+  .faceddd-single-text > div > * {
+    padding: 7px 0; }
+
+.faceddd-iframee {
+  width: 100%;
+  overflow: hidden;
+  height: 0px;
+  transition: 0.2s ease-in-out; }
+  .faceddd-iframee > div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 7px; }
+    .faceddd-iframee > div img {
+      width: 50px;
+      height: 50px;
+      filter: invert(1);
+      cursor: pointer; }
+  .faceddd-iframee iframe {
+    width: 100%;
+    border: none;
+    padding: 5px;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #333; }
+
+.faceddd-iframee.active {
+  height: 600px !important;
+  max-height: 70vh !important; }
+
+.faceddd-keywords {
+  margin: 50px auto !important; }
+  .faceddd-keywords > h1,
+  .faceddd-keywords > h2,
+  .faceddd-keywords > h3,
+  .faceddd-keywords > h4,
+  .faceddd-keywords > h5,
+  .faceddd-keywords > h6 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #fff; }
+  .faceddd-keywords > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center; }
+    .faceddd-keywords > div a {
+      flex-grow: 1;
+      background-color: #c83c3c;
+      transition: 0.2s ease-in-out;
+      border-radius: 5px;
+      text-align: center;
+      overflow: hidden;
+      padding: 10px 20px;
+      color: rgba(255, 255, 255, 0.7); }
+      .faceddd-keywords > div a:hover {
+        background-color: #000;
+        transform: translateY(-3px);
+        color: #fff; }
+    .faceddd-keywords > div a:nth-child(even) {
+      background-color: #633737 !important;
+      color: #fff; }
+
+.faceddd-single {
+  padding: 20px;
+  background-color: #f7f2f2;
+  color: #333;
+  border: 2px dotted #f1f1f1;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  @media (max-width: 920px) {
+    .faceddd-single {
+      grid-template-columns: 1fr; } }
+
+/*# sourceMappingURL=detail.css.map */

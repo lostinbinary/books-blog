@@ -35,6 +35,8 @@ class Cache
     {
         if($this->caching == false) return false;
         $json = json_encode( utf8ize($data), JSON_UNESCAPED_UNICODE);
+        if(!is_dir('cache'))
+            mkdir("cache", 0777, true);
         $fh = fopen($this->cacheName, 'w');
         fwrite($fh, $json);
         fclose($fh);

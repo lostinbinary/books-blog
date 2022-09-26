@@ -33,7 +33,7 @@ if ($cache->isCached()) {
     $total = $db_handle->get_query("SELECT COUNT(*) as total FROM ".get_env('TABLE_LINKS')." $WHERE", [$data->search_text], true)->total;
     $data->pagination->update($total);
 
-    $related_keywords = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_KEYWORDS')." WHERE MATCH(keyword) AGAINST (?) LIMIT 20",[$data->search_text]);
+    $data->related_keywords = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_KEYWORDS')." WHERE MATCH(keyword) AGAINST (?) LIMIT 20",[$data->search_text]);
     
     $cache->set($data);
 }
@@ -90,7 +90,7 @@ if ($cache->isCached()) {
             <div class="forgottenn-keywords">
             <h2><?= $messages['related_keywords'] ?></h2>
             <div>
-                <?php foreach($related_keywords as $related_keyword): ?>
+                <?php foreach($data->related_keywords as $related_keyword): ?>
                     <a href="/s/<?= slug($related_keyword->keyword) ?>"><?= $related_keyword->keyword ?></a>
                 <?php endforeach ?>
             </div>

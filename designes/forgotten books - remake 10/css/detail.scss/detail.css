@@ -1,0 +1,147 @@
+.stoppeddd-single-image {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  grid-gap: 30px !important;
+  margin-bottom: 40px; }
+  @media (max-width: 720px) {
+    .stoppeddd-single-image {
+      grid-template-columns: 1fr !important; } }
+  .stoppeddd-single-image > span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 5px;
+    height: 340px;
+    max-width: 400px;
+    max-height: 340px;
+    box-shadow: 1px 1px 5px #fff; }
+    .stoppeddd-single-image > span img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center; }
+  .stoppeddd-single-image > div {
+    order: -1;
+    display: flex !important;
+    height: inherit !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    padding: 7px 0; }
+    .stoppeddd-single-image > div > h1,
+    .stoppeddd-single-image > div > h2,
+    .stoppeddd-single-image > div > h3,
+    .stoppeddd-single-image > div > h4,
+    .stoppeddd-single-image > div > h5,
+    .stoppeddd-single-image > div > h6 {
+      margin-bottom: 15px; }
+    .stoppeddd-single-image > div > strong {
+      display: inline-block;
+      margin-bottom: 15px;
+      font-size: 1rem; }
+    .stoppeddd-single-image > div button {
+      display: inline-flex;
+      flex-direction: column;
+      border: none;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 5px;
+      background-color: #333; }
+      .stoppeddd-single-image > div button span {
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: bold; }
+
+.stoppeddd-single-text > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; }
+  .stoppeddd-single-text > div > span {
+    display: block;
+    border-bottom: 1px solid #333;
+    font-weight: bold;
+    font-size: 14px; }
+  .stoppeddd-single-text > div > div {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 5px 15px;
+    font-size: 13px; }
+  .stoppeddd-single-text > div > p {
+    font-size: 14px;
+    max-width: 1000px; }
+  .stoppeddd-single-text > div > * {
+    padding: 7px 0; }
+
+.stoppeddd-iframee {
+  width: 100%;
+  overflow: hidden;
+  height: 0px;
+  transition: 0.2s ease-in-out; }
+  .stoppeddd-iframee > div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 7px; }
+    .stoppeddd-iframee > div img {
+      width: 50px;
+      height: 50px;
+      filter: invert(1);
+      cursor: pointer; }
+  .stoppeddd-iframee iframe {
+    width: 100%;
+    border: none;
+    padding: 5px;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #333; }
+
+.stoppeddd-iframee.active {
+  height: 600px !important;
+  max-height: 70vh !important; }
+
+.stoppeddd-keywords {
+  margin: 50px auto !important; }
+  .stoppeddd-keywords > h1,
+  .stoppeddd-keywords > h2,
+  .stoppeddd-keywords > h3,
+  .stoppeddd-keywords > h4,
+  .stoppeddd-keywords > h5,
+  .stoppeddd-keywords > h6 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333; }
+  .stoppeddd-keywords > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; }
+    .stoppeddd-keywords > div a {
+      flex-grow: 1;
+      background-color: #6a6c85;
+      transition: 0.2s ease-in-out;
+      border-radius: 5px;
+      text-align: center;
+      overflow: hidden;
+      padding: 10px 20px;
+      color: rgba(255, 255, 255, 0.7); }
+      .stoppeddd-keywords > div a:hover {
+        transform: translateY(-3px);
+        color: #fff; }
+    .stoppeddd-keywords > div a:nth-child(even) {
+      background-color: #b25454 !important;
+      color: #fff; }
+
+.stoppeddd-single {
+  padding: 20px;
+  background-color: #fff;
+  color: #333;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  @media (max-width: 920px) {
+    .stoppeddd-single {
+      grid-template-columns: 1fr; } }
+
+/*# sourceMappingURL=detail.css.map */

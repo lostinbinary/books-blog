@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer; }
+
+button {
+  cursor: pointer; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Trebuchet MS, sans-serif;
+  font-size: 16.5552px;
+  background-color: #f1f1f1; }
+
+header {
+  background: #00467f;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #a5cc82, #00467f);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #a5cc82, #00467f);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 18px 0; }
+  header > div {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    grid-gap: 10px;
+    flex-wrap: wrap; }
+    header > div .stoppeddd-map {
+      display: flex;
+      flex-wrap: wrap; }
+      header > div .stoppeddd-map > a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #727272;
+        color: #fff;
+        position: relative; }
+        header > div .stoppeddd-map > a::before {
+          content: "";
+          display: block;
+          z-index: 2;
+          position: absolute;
+          right: -16px;
+          top: 0;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 16px 0 16px 16px;
+          border-color: #0000 #0000 #0000 #727272;
+          z-index: 9; }
+      header > div .stoppeddd-map > a:not(a:last-child)::after {
+        content: "";
+        display: block;
+        z-index: 2;
+        position: absolute;
+        right: -18px;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 16px 0 16px 16px;
+        border-color: #0000 #0000 #0000 #fff; }
+      header > div .stoppeddd-map > a:last-child {
+        background-color: #303030 !important; }
+        header > div .stoppeddd-map > a:last-child::before {
+          border-color: #0000 #0000 #0000 #303030 !important; }
+    header > div > a {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #fff; }
+    header > div form {
+      display: flex;
+      flex-grow: 1;
+      border-radius: 5px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 520px; }
+      header > div form input {
+        padding: 7px;
+        flex-grow: 1;
+        font-size: 1rem;
+        border: none; }
+        header > div form input::placeholder {
+          color: #303030;
+          font-size: 1rem; }
+      header > div form button {
+        background-color: #71a282;
+        width: 70px;
+        border-left: 2px solid #333;
+        border: none; }
+        header > div form button img {
+          filter: invert(1);
+          width: 20px; }
+
+.stoppeddd-centered-text {
+  padding: 8px;
+  margin: 5px;
+  background-color: #cee4be;
+  color: #333;
+  text-align: center; }
+  .stoppeddd-centered-text p {
+    margin: 1rem 0; }
+
+.stoppeddd-container {
+  flex-grow: 1;
+  margin-bottom: 40px;
+  margin-top: 10px; }
+  .stoppeddd-container > div {
+    width: 98%;
+    max-width: 1200px;
+    margin: 0 auto; }
+
+div.stoppeddd-books-list {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  div.stoppeddd-books-list > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    align-items: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: auto !important; }
+    div.stoppeddd-books-list > div a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      flex-grow: 1;
+      color: #333;
+      background-color: #cee4be;
+      border-radius: 5px;
+      border-bottom: 1px solid #fff;
+      padding: 3px;
+      font-size: 14px; }
+  div.stoppeddd-books-list > div,
+  div.stoppeddd-books-list > a {
+    height: 370px;
+    overflow: hidden; }
+  div.stoppeddd-books-list > a {
+    position: relative;
+    background-color: #303030;
+    box-shadow: 1px 1px 5px #333;
+    overflow: hidden;
+    width: 20%;
+    min-width: 290px;
+    flex-grow: 1;
+    border-radius: 5px 15px; }
+    div.stoppeddd-books-list > a > div {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      width: 90%;
+      padding: 15px;
+      background-color: #0000008c;
+      overflow: hidden;
+      display: flex;
+      border-radius: 20px;
+      flex-direction: column; }
+      div.stoppeddd-books-list > a > div > p {
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        font-weight: 600;
+        max-height: 200px;
+        overflow: hidden;
+        font-size: 12px;
+        transition: 0.2s ease-in-out; }
+      div.stoppeddd-books-list > a > div > div {
+        color: #fff;
+        font-size: 1.4rem;
+        padding: 7px;
+        overflow: hidden;
+        text-align: center;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 20px;
+        font-weight: bold; }
+    div.stoppeddd-books-list > a img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center; }
+
+footer {
+  padding: 60px;
+  font-size: 12px;
+  text-align: center;
+  background: #00467f;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #a5cc82, #00467f);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #a5cc82, #00467f);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff; }
+  footer div {
+    margin-top: 10px; }
+    footer div a:hover {
+      text-decoration: underline; }
+
+.stoppeddd-content-section {
+  margin: 40px auto !important;
+  background-color: #fff;
+  padding: 32px;
+  color: #333; }
+  .stoppeddd-content-section > h1,
+  .stoppeddd-content-section > h2,
+  .stoppeddd-content-section > h3,
+  .stoppeddd-content-section > h4,
+  .stoppeddd-content-section > h5,
+  .stoppeddd-content-section > h6 {
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin-bottom: 22px;
+    padding-left: 105px;
+    padding-right: 105px; }
+  .stoppeddd-content-section .content-section-boxs > * {
+    margin: 12px 0; }
+  .stoppeddd-content-section .content-section-boxs p {
+    line-height: 1.4; }
+  .stoppeddd-content-section .content-section-boxs > h1,
+  .stoppeddd-content-section .content-section-boxs > h2,
+  .stoppeddd-content-section .content-section-boxs > h3,
+  .stoppeddd-content-section .content-section-boxs > h4,
+  .stoppeddd-content-section .content-section-boxs > h5,
+  .stoppeddd-content-section .content-section-boxs > h6 {
+    font-size: 1.3rem;
+    margin: 22px 0;
+    font-weight: 700; }
+  .stoppeddd-content-section .content-section-boxs img {
+    max-width: 800px;
+    width: 85%;
+    border: 4px solid #fff;
+    border-radius: 20px;
+    overflow: hidden; }
+  .stoppeddd-content-section .content-section-boxs strong {
+    /*font-weight: 700;*/ }
+  .stoppeddd-content-section .content-section-boxs ul {
+    list-style-type: disc;
+    padding-left: 42px;
+    padding-right: 42px;
+    margin: 17px 0; }
+    .stoppeddd-content-section .content-section-boxs ul li {
+      margin-bottom: 12px; }
+
+/*# sourceMappingURL=common.css.map */
