@@ -39,16 +39,57 @@ if ($cache->isCached()) {
 }
 
 ?>
+<?php if(defined('HEADER_SECURITY') != true) die();
+
+include 'inc/messages.php';
+include 'inc/connect.php';
+include 'inc/cache.php';
+include 'inc/modules/book.php';
+
+$data = new Stdclass;
+$data->search_text = '';
+$data->pagination = new Pagination;
+	
+if ($cache->isCached()) {
+	$data = $cache->getCache();
+    // echo "<pre>"; print_r($data);
+} else {
+    $data->pagination->setLimit(20);
+    if(isset($page) && !empty($page))
+        $data->pagination->setPage( intVal($page) );
+
+    $data->search_text = str_replace('-', ' ', urldecode($search_text));
+    
+    $WHERE = "WHERE MATCH(title) AGAINST(?)";
+    // get books
+    $data->books = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_LINKS')." 
+        $WHERE
+        ORDER BY id DESC 
+        LIMIT {$data->pagination->offset}, {$data->pagination->limit}",[$data->search_text]);
+        
+    foreach($data->books as &$book)
+        $book = new Book($db_handle, $book);
+    
+    // pagination end
+    $total = $db_handle->get_query("SELECT COUNT(*) as total FROM ".get_env('TABLE_LINKS')." $WHERE", [$data->search_text], true)->total;
+    $data->pagination->update($total);
+
+    $data->related_keywords = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_KEYWORDS')." WHERE MATCH(keyword) AGAINST (?) LIMIT 20",[$data->search_text]);
+    
+    $cache->set($data);
+}
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?= $messages['index_title'] . (isset($page)?" - $messages[page] $page":'') ?></title>
-        <meta name="og:description" content="<?= $messages['index_description'] ?>"/>
-        <meta name="og:keywords" content="<?= $messages['index_keywords'] ?>" />
-        <meta name="description" content="<?= $messages['index_description'] ?>"/>
-        <meta name="keywords" content="<?= $messages['index_keywords'] ?>" />
+        <title><?= $messages['search_title'] . (isset($page)?" - $messages[page] $page":'') ?></title>
+        <meta name="og:description" content="<?= $messages['search_description'] ?>"/>
+        <meta name="og:keywords" content="<?= $messages['search_keywords'] ?>" />
+        <meta name="description" content="<?= $messages['search_description'] . (isset($page)?" - $messages[page] $page":'') ?>"/>
+        <meta name="keywords" content="<?= $messages['search_keywords'] ?>" />
         <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-icon-180x180.png">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-16x16.png" sizes="16x16">

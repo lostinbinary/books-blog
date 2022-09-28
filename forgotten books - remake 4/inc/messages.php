@@ -32,6 +32,10 @@ $messages = [
             Today we have <strong>{count}</strong> books available to read online,
             download as ebooks, or purchase in print.
         </p>',
+
+    'search_title' => 'Search result: ',
+    'search_description' => 'Search result: ',
+    'search_keywords' => 'Search result: ',
     
     'main_footer_text' => '<div class="forgottenn-content-section">
             <h1>

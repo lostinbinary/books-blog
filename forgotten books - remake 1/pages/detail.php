@@ -64,12 +64,12 @@ $og = setMetas($messages, 'detail_', ['title' => $data->book->title, 'descriptio
       <div>
         <div class="bookishh-single">
           <div class="bookishh-single-image">
-            <span><img data-src="img/1.jpg" /></span>
+            <span><img data-src="/assets/img/1.jpg" /></span>
             <div>
               <h1><?= $data->book->title ?></h1>
               <!-- <strong>by Lileen Hardy</strong> -->
               <button>
-                <img data-src="img/pdf.png" />
+                <img data-src="/assets/img/pdf.png" />
                 <span><?= $messages['download'] ?></span>
               </button>
             </div>
@@ -89,7 +89,7 @@ $og = setMetas($messages, 'detail_', ['title' => $data->book->title, 'descriptio
         </div>
         <div class="bookishh-books-list">
           
-                    <?php foreach($data->books as $book): ?>
+                    <?php foreach($data->book->relateds as $book): ?>
                         <a href="<?= $book->path ?>">
                             <div>
                             <div><?= $book->title?></div>
