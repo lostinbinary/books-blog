@@ -46,9 +46,9 @@ if ($cache->isCached()) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= $messages['search_title'] . $data->search_text . (isset($page)?" - $messages[page] $page":'') ?></title>
         <meta name="og:description" content="<?= $messages['search_description'] . $data->search_text ?>"/>
-        <meta name="og:keywords" content="<?= $messages['search_keywords'] . slug($data->search_text) ?>" />
+        <meta name="og:keywords" content="<?= $messages['search_keywords'] . slug($data->search_text, ',') ?>" />
         <meta name="description" content="<?= $messages['search_description'] . $data->search_text . (isset($page)?" - $messages[page] $page":'') ?>"/>
-        <meta name="keywords" content="<?= $messages['search_keywords'] . slug($data->search_text) ?>" />
+        <meta name="keywords" content="<?= $messages['search_keywords'] . slug($data->search_text, ',') ?>" />
         <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-icon-180x180.png">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-16x16.png" sizes="16x16">

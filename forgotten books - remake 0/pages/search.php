@@ -85,11 +85,11 @@ if ($cache->isCached()) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?= $messages['search_title'] . (isset($page)?" - $messages[page] $page":'') ?></title>
-        <meta name="og:description" content="<?= $messages['search_description'] ?>"/>
-        <meta name="og:keywords" content="<?= $messages['search_keywords'] ?>" />
-        <meta name="description" content="<?= $messages['search_description'] . (isset($page)?" - $messages[page] $page":'') ?>"/>
-        <meta name="keywords" content="<?= $messages['search_keywords'] ?>" />
+        <title><?= $messages['search_title'] . $data->search_text . (isset($page)?" - $messages[page] $page":'') ?></title>
+        <meta name="og:description" content="<?= $messages['search_description'] . $data->search_text ?>"/>
+        <meta name="og:keywords" content="<?= $messages['search_keywords'] . slug($data->search_text, ',') ?>" />
+        <meta name="description" content="<?= $messages['search_description'] . $data->search_text . (isset($page)?" - $messages[page] $page":'') ?>"/>
+        <meta name="keywords" content="<?= $messages['search_keywords'] . slug($data->search_text, ',') ?>" />
         <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-icon-180x180.png">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-16x16.png" sizes="16x16">
