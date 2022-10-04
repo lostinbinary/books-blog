@@ -33,9 +33,10 @@ $messages = [
             download as ebooks, or purchase in print.
         </p>',
 
-    'search_title' => 'Search result: ',
-    'search_description' => 'Search result: ',
-    'search_keywords' => 'Search result: ',
+    'search_title' => 'Search result: {search_text}{page}',
+    'search_description' => 'Search result: {search_text}{page}',
+    'search_keywords' => 'Search result: {search_text}{page}',
+    'search_h1' => 'Search result: {search_text}{page}',
     
     'main_footer_text' => '<div class="forgottenn-content-section">
             <h1>
@@ -187,9 +188,15 @@ function decode($id)
 
 function slug($string, $slug = '-')
 {
-    $string = strtolower( preg_replace('/[^\p{L}\p{N}\s]/u', '', $string) );
-    $string = preg_replace('/\s+/', $slug, $string);
+    $string = strtolower( preg_replace('/[^\p{L}\p{N}\s]\s+/u', $slug, $string) );
     return $string;
+}
+
+function set_metas($page,$key,$value,&$messages)
+{
+    foreach(['title','description','keywords','h1'] as $meta)
+        $messages[$page.'_'.$meta] = str_replace($key, $value, $messages[$page.'_'.$meta]);
+    $messages[$page.'_keywords'] = slug($messages[$page.'_keywords'], ',');
 }
 
 function uploadImage($key, $filename = false)

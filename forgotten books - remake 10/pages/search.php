@@ -36,7 +36,11 @@ if ($cache->isCached()) {
     $data->related_keywords = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_KEYWORDS')." WHERE MATCH(keyword) AGAINST (?) LIMIT 20",[$data->search_text]);
     
     $cache->set($data);
+
 }
+set_metas('search','{search_text}',$data->search_text,$messages);
+if($data->pagination->page > 1) set_metas('search','{page}',$data->pagination->page,$messages);
+else set_metas('search','{page}','',$messages);
 
 ?>
 <!DOCTYPE html>
@@ -44,11 +48,11 @@ if ($cache->isCached()) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?= $messages['search_title'] . $data->search_text . (isset($page)?" - $messages[page] $page":'') ?></title>
-        <meta name="og:description" content="<?= $messages['search_description'] . $data->search_text ?>"/>
-        <meta name="og:keywords" content="<?= $messages['search_keywords'] . slug($data->search_text, ',') ?>" />
-        <meta name="description" content="<?= $messages['search_description'] . $data->search_text . (isset($page)?" - $messages[page] $page":'') ?>"/>
-        <meta name="keywords" content="<?= $messages['search_keywords'] . slug($data->search_text, ',') ?>" />
+        <title><?= $messages['search_title'] ?></title>
+        <meta name="og:description" content="<?= $messages['search_description'] ?>"/>
+        <meta name="og:keywords" content="<?= $messages['search_keywords'] ?>" />
+        <meta name="description" content="<?= $messages['search_description'] ?>"/>
+        <meta name="keywords" content="<?= $messages['search_keywords'] ?>" />
         <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-icon-180x180.png">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-16x16.png" sizes="16x16">
@@ -73,8 +77,7 @@ if ($cache->isCached()) {
       </div>
     </header>
     <div class="stoppeddd-centered-text">
-        <?= preg_replace('/{count}/i', number_format($data->pagination->rows_count), $messages['index_p']) 
-            . (isset($page)?" - $messages[page] $page":'') ?>
+        <h1><?= $messages['search_h1'] ?></h1>
     </div>
     <div class="stoppeddd-container">
       <div>

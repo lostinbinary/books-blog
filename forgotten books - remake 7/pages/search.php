@@ -36,7 +36,11 @@ if ($cache->isCached()) {
     $data->related_keywords = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_KEYWORDS')." WHERE MATCH(keyword) AGAINST (?) LIMIT 20",[$data->search_text]);
     
     $cache->set($data);
+
 }
+set_metas('search','{search_text}',$data->search_text,$messages);
+if($data->pagination->page > 1) set_metas('search','{page}',$data->pagination->page,$messages);
+else set_metas('search','{page}','',$messages);
 
 ?>
 <!DOCTYPE html>
@@ -73,8 +77,7 @@ if ($cache->isCached()) {
       </div>
     </header>
     <div class="timersss-centered-text">
-        <?= preg_replace('/{count}/i', number_format($data->pagination->rows_count), $messages['index_p']) 
-            . (isset($page)?" - $messages[page] $page":'') ?>
+        <h1><?= $messages['search_h1'] ?></h1>
     </div>
     <div class="timersss-container">
       <div>
