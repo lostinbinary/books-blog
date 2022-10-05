@@ -1,12 +1,22 @@
-<?php define('HEADER_SECURITY', true);
+<?php 
 
-include 'inc/messages.php';
-include 'inc/connect.php';
-// include 'inc/modules/book.php';
+// Global Variables
+$HOST           = 'localhost';
+$DATABASE       = 't2';
+$USER           = 'giorgi2021';
+$PASSWORD       = 'giorgi2021';
 
-$SQL = "SELECT * FROM " . GET_ENV("TABLE_LINKS") . " WHERE checked = false LIMIT 10";
-$rows = $db_handle->get_query($SQL);
-foreach($rows as $row) {
+$TABLE_LINKS    = 'israelpdf1_db';
+$LIMIT          = '10';
+
+
+// connection
+$db = new PDO("mysql:host=$HOST;dbname=$DATABASE;charset=utf8", $USER, $PASSWORD) or die("Cannot connect to mySQL.");
+
+$rows = $db->query("SELECT * FROM $TABLE_LINKS WHERE checked = false LIMIT $LIMIT")->fetchAll(PDO::FETCH_OBJ);
+
+foreach($rows as $row)
+{
     $title = str_replace(' ', '+', $row->title);
     $response = file_get_contents("https://www.ask.com/web?q=" . $title);
     
@@ -23,6 +33,12 @@ foreach($rows as $row) {
     }
     $data = json_encode($json);
     
-    $SQL = "UPDATE " . GET_ENV("TABLE_LINKS") . " SET checked = true, ask_data = '$data' WHERE id = '$row->id'";
-    $db_handle->update_query($SQL);
+    // update row
+    $SQL = "UPDATE $TABLE_LINKS SET checked = true, ask_data = '$data' WHERE id = '$row->id'";
+    $stmt = $db->prepare($SQL);
+    $stmt->execute();
 }
+
+
+
+
