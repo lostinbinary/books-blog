@@ -17,10 +17,10 @@ $rows = $db->query("SELECT * FROM $TABLE_LINKS WHERE checked = false LIMIT $LIMI
 
 foreach($rows as $row)
 {
-    $title = str_replace(' ', '+', $row->title);
+    $title = urlencode($row->title);
     $response = file_get_contents("https://www.ask.com/web?q=" . $title);
     
-    $json = [];
+    $json = '';
     if(preg_match_all('~class="PartialSearchResults-item-wrapper">(.*?)</p>~is', $response, $match)) {
         foreach($match[0] as $block_html) {
             $block = new stdClass;
@@ -28,15 +28,15 @@ foreach($rows as $row)
                 $block->title = $block_match[1];
             if(preg_match('~class="PartialSearchResults-item-abstract">(.*?)</p>~is', $block_html, $block_match))
                 $block->description = $block_match[1];
-            $json[] = $block;
+            $json .= "<h3>$block->title</h3><p>$block->description</p>";
         }
     }
-    $data = json_encode($json);
-    
+    $data = $json;
+    echo $data."<br><br>";
     // update row
-    $SQL = "UPDATE $TABLE_LINKS SET checked = true, ask_data = '$data' WHERE id = '$row->id'";
+    $SQL = "UPDATE $TABLE_LINKS SET checked = true, ask_data = ? WHERE id = ?";
     $stmt = $db->prepare($SQL);
-    $stmt->execute();
+    $stmt->execute([$data,$row->id]);
 }
 
 
