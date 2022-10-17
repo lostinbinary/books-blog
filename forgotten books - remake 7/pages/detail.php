@@ -75,7 +75,7 @@ $og = setMetas($messages, 'detail_', ['title' => $data->book->title, 'descriptio
             </div>
           </div>
           <div class="timersss-iframee">
-            <div><img src="img/x.svg" alt="" /></div>
+            <div><img src="/assets/img/x.svg" alt="" /></div>
             <iframe
               data-src="<?= $data->book->url ?>"
             ></iframe>

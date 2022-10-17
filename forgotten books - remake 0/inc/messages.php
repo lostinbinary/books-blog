@@ -188,11 +188,12 @@ function decode($id)
 
 function slug($string, $slug = '-')
 {
-    $string = strtolower( preg_replace('/[^\p{L}\p{N}\s]\s+/u', $slug, $string) );
-    return $string;
+    $string = preg_replace('/[^\p{L}\p{N}\s]/u', '', $string);
+    $string = preg_replace('/\s+/u', $slug, $string);
+    return strtolower($string);
 }
 
-function set_metas($page,$key,$value,&$messages)
+function set_metas($page, $key, $value, &$messages)
 {
     foreach(['title','description','keywords','h1'] as $meta)
         $messages[$page.'_'.$meta] = str_replace($key, $value, $messages[$page.'_'.$meta]);

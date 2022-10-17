@@ -77,7 +77,7 @@ $og = setMetas($messages, 'detail_', ['title' => $data->book->title, 'descriptio
             </div>
           </div>
           <div class="coverupsss-iframee">
-            <div><img src="img/x.svg" alt="" /></div>
+            <div><img src="/assets/img/x.svg" alt="" /></div>
             <iframe></iframe>
           </div>
           <div class="coverupsss-single-text">
