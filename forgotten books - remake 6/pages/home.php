@@ -11,7 +11,7 @@ $data->pagination = new Pagination;
 if ($cache->isCached()) {
 	$data = $cache->getCache();
 } else {
-    $data->pagination->setLimit(20);
+    $data->pagination->setLimit(get_env('MAIN_LIMIT'));
     if(isset($page) && !empty($page))
         $data->pagination->setPage( intVal($page) );
 
@@ -29,6 +29,8 @@ if ($cache->isCached()) {
 
     $cache->set($data);
 }
+if($data->pagination->page > 1) set_metas('index','{page}',$data->pagination->page,$messages);
+else set_metas('index','{page}','',$messages);
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +43,7 @@ if ($cache->isCached()) {
         <meta name="og:keywords" content="<?= $messages['index_keywords'] ?>" />
         <meta name="description" content="<?= $messages['index_description'] ?>"/>
         <meta name="keywords" content="<?= $messages['index_keywords'] ?>" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-icon-180x180.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-16x16.png" sizes="16x16">
         <link rel="canonical" href="<?="$_SERVER[REQUEST_SCHEME]://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"?>" />
@@ -64,6 +66,7 @@ if ($cache->isCached()) {
       </div>
     </header>
     <div class="faceddd-centered-text">
+        <h1><?= $messages['index_h1'] ?></h1>
         <?= preg_replace('/{count}/i', number_format($data->pagination->rows_count), $messages['index_p']) 
             . (isset($page)?" - $messages[page] $page":'') ?>
     </div>
@@ -76,7 +79,7 @@ if ($cache->isCached()) {
                         <a href="<?= $book->path ?>">
                             <div>
                             <div><?= $book->title?></div>
-                            <p><?= $book->description ?></p>
+                            <p><?= strip_tags($book->description) ?></p>
                             </div>
                             <img data-src="/assets/img/1.jpg" />
                         </a>

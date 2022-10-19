@@ -22,7 +22,7 @@ class Book
 
     public function relateds()
     {
-        $books = $this->db_handle->get_query("SELECT * FROM ".get_env('TABLE_LINKS')." WHERE MATCH(title) AGAINST('$this->title') ORDER BY id DESC LIMIT 20");
+        $books = $this->db_handle->get_query("SELECT * FROM ".get_env('TABLE_LINKS')." WHERE MATCH(title) AGAINST('$this->title') ORDER BY id DESC LIMIT ".get_env('LINKS_LIMIT')."");
             
         foreach($books as &$book)
             $book = new Book($this->db_handle, $book);
@@ -32,7 +32,7 @@ class Book
 
     public function related_keywords()
     {
-        $keywords = $this->db_handle->get_query("SELECT * FROM ".get_env('TABLE_KEYWORDS')." WHERE MATCH(keyword) AGAINST('$this->title') ORDER BY id DESC LIMIT 20");
+        $keywords = $this->db_handle->get_query("SELECT * FROM ".get_env('TABLE_KEYWORDS')." WHERE MATCH(keyword) AGAINST('$this->title') ORDER BY id DESC LIMIT ".get_env('KEYWORDS_LIMIT')."");
         return $keywords;
     }
 }

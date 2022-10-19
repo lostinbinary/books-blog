@@ -24,6 +24,7 @@ $messages = [
     'index_title' => 'UCM',
     'index_description' => 'UCM',
     'index_keywords' => 'UCM',
+    'index_h1' => 'main page {page}',
     'index_p' => '<p>
             Forgotten Books is a London-based book publisher specializing in the
             restoration of old books, both fiction and non-fiction.

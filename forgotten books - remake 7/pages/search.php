@@ -13,7 +13,7 @@ if ($cache->isCached()) {
 	$data = $cache->getCache();
     // echo "<pre>"; print_r($data);
 } else {
-    $data->pagination->setLimit(20);
+    $data->pagination->setLimit(get_env('MAIN_LIMIT'));
     if(isset($page) && !empty($page))
         $data->pagination->setPage( intVal($page) );
 
@@ -53,7 +53,7 @@ else set_metas('search','{page}','',$messages);
         <meta name="og:keywords" content="<?= $messages['search_keywords'] . slug($data->search_text, ',') ?>" />
         <meta name="description" content="<?= $messages['search_description'] . $data->search_text . (isset($page)?" - $messages[page] $page":'') ?>"/>
         <meta name="keywords" content="<?= $messages['search_keywords'] . slug($data->search_text, ',') ?>" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-icon-180x180.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-16x16.png" sizes="16x16">
         <link rel="canonical" href="<?="$_SERVER[REQUEST_SCHEME]://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"?>" />
@@ -91,7 +91,7 @@ else set_metas('search','{page}','',$messages);
                         <a href="<?= $book->path ?>">
                             <div>
                             <div><?= $book->title?></div>
-                            <p><?= $book->description ?></p>
+                            <p><?= strip_tags($book->description) ?></p>
                             </div>
                             <img data-src="/assets/img/1.jpg" />
                         </a>

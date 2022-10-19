@@ -14,7 +14,7 @@ if ($cache->isCached()) {
         $data->pagination->setPage( intVal($page) );
 
     // get books
-    $data->book = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_LINKS')." WHERE id = ? LIMIT 20",[decode($encrypted_id)],true);
+    $data->book = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_LINKS')." WHERE id = ?",[decode($encrypted_id)],true);
     
     $data->book = new Book($db_handle, $data->book);
     $data->book->relateds           = $data->book->relateds();
@@ -36,7 +36,7 @@ $og = setMetas($messages, 'detail_', ['title' => $data->book->title, 'descriptio
         <meta name="og:keywords" content="<?= $og->detail_keywords ?>" />
         <meta name="description" content="<?= $og->detail_description ?>"/>
         <meta name="keywords" content="<?= $og->detail_keywords ?>" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-icon-180x180.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/public/uploads/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/public/uploads/favicon-16x16.png" sizes="16x16">
         <link rel="canonical" href="<?="$_SERVER[REQUEST_SCHEME]://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"?>" />
