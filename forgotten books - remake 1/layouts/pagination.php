@@ -1,4 +1,4 @@
-<?php if(defined('HEADER_SECURITY') != true) die();
+<?php /*if(defined('HEADER_SECURITY') != true) die();
 
     $currentUrl = "//$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     if(substr($currentUrl, -1)==="/")
@@ -40,4 +40,4 @@
         </div>
     <?php else: ?>
         <!-- <div class="pagination"><?= $messages['no_data'] ?></div> -->
-    <?php endif ?>
+    <?php endif */?>

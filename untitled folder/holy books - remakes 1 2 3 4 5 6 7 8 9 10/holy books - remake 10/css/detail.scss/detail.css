@@ -1,0 +1,114 @@
+.catch22-boxes {
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  background-color: #f1f1f1; }
+  .catch22-boxes > h1,
+  .catch22-boxes > h2,
+  .catch22-boxes > h3,
+  .catch22-boxes > h4,
+  .catch22-boxes > h5,
+  .catch22-boxes > h6 {
+    font-size: 1.6;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center; }
+  .catch22-boxes > p {
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 30px; }
+  .catch22-boxes .catch22-iframe-description {
+    display: grid;
+    margin-bottom: 50px;
+    grid-template-columns: 1fr;
+    grid-gap: 30px; }
+    @media (max-width: 920px) {
+      .catch22-boxes .catch22-iframe-description {
+        grid-template-columns: 1fr; } }
+    .catch22-boxes .catch22-iframe-description .catch22-iframe {
+      position: relative; }
+      .catch22-boxes .catch22-iframe-description .catch22-iframe > div {
+        background-color: #020202;
+        position: relative; }
+        .catch22-boxes .catch22-iframe-description .catch22-iframe > div iframe {
+          border: none;
+          height: 700px;
+          max-height: 80vh;
+          width: 100%; }
+        .catch22-boxes .catch22-iframe-description .catch22-iframe > div > div {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: 100%; }
+          .catch22-boxes .catch22-iframe-description .catch22-iframe > div > div > div {
+            height: 100%;
+            cursor: pointer;
+            position: relative; }
+            .catch22-boxes .catch22-iframe-description .catch22-iframe > div > div > div > img {
+              height: 100%; }
+            .catch22-boxes .catch22-iframe-description .catch22-iframe > div > div > div > span {
+              display: inline-flex;
+              justify-content: center;
+              align-items: center;
+              color: #fff;
+              background-color: rgba(0, 0, 0, 0.7);
+              font-size: 1.1rem;
+              padding: 7px 15px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              border-radius: 50%;
+              transform: translate(-50%, -50%); }
+              .catch22-boxes .catch22-iframe-description .catch22-iframe > div > div > div > span img {
+                filter: invert(1);
+                width: 45px; }
+        .catch22-boxes .catch22-iframe-description .catch22-iframe > div > span {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          display: none;
+          background-color: #333;
+          z-index: 9; }
+          .catch22-boxes .catch22-iframe-description .catch22-iframe > div > span > div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center; }
+            .catch22-boxes .catch22-iframe-description .catch22-iframe > div > span > div > span {
+              display: inline-block;
+              width: 70px;
+              height: 70px;
+              border-radius: 50%;
+              border-left: 5px solid #fff;
+              border-top: 5px solid #fff;
+              transition: 0.2s ease-in-out;
+              animation-name: rotate;
+              animation-duration: 0.5s;
+              animation-timing-function: linear;
+              animation-iteration-count: infinite; }
+      .catch22-boxes .catch22-iframe-description .catch22-iframe > p {
+        line-height: 1.7; }
+    .catch22-boxes .catch22-iframe-description .catch22-description {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 40px; }
+      @media (max-width: 920px) {
+        .catch22-boxes .catch22-iframe-description .catch22-description {
+          order: 1; } }
+      .catch22-boxes .catch22-iframe-description .catch22-description > div {
+        margin-bottom: 15px; }
+        .catch22-boxes .catch22-iframe-description .catch22-description > div > span {
+          font-weight: bold;
+          font-size: 1.05rem;
+          display: block;
+          margin-bottom: 7px; }
+        .catch22-boxes .catch22-iframe-description .catch22-description > div > div {
+          font-size: 0.95rem; }
+
+/*# sourceMappingURL=detail.css.map */

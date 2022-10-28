@@ -21,9 +21,9 @@ $messages = [
         </div>
         </footer>',
 
-    'index_title' => 'UCM',
-    'index_description' => 'UCM',
-    'index_keywords' => 'UCM',
+    'index_title' => 'UCM {page}',
+    'index_description' => 'UCM {page}',
+    'index_keywords' => 'UCM {page}',
     'index_h1' => 'main page {page}',
     'index_p' => '<p>
             Forgotten Books is a London-based book publisher specializing in the
@@ -117,6 +117,7 @@ $messages = [
                 </p>
             </div>
         </div>',
+    'footer' => ' © 2022 HolyBooks.com - download free PDF e-books • Built with GeneratePress',
 
     'detail_title' => '{title}',
     'detail_description' => '{description}',
@@ -173,7 +174,7 @@ function setMetas(&$messages, $index, $data)
         foreach($data as $data_key => $data_value)
             $meta_data->{$index.$key} = str_replace('{'.$data_key.'}', $data_value, $meta_data->{$index.$key});
     }
-    $meta_data->{$index.'keywords'} = slug($meta_data->{$index.'keywords'},',');
+    // $meta_data->{$index.'keywords'} = slug($meta_data->{$index.'keywords'},',');
     return $meta_data;
 }
 

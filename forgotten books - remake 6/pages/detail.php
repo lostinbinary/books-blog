@@ -54,7 +54,7 @@ $og = setMetas($messages, 'detail_', ['title' => $data->book->title, 'descriptio
         </div> -->
         <a href="/"><?= $messages['logo_name'] ?></a>
         <form id="search">
-            <input type="text" id="search_input" placeholder="<?= $messages['search'] ?>" value="<?= $data->search_text ?? '' ?>" />
+            <input type="text" id="search_input" placeholder="<?= $messages['search'] ?>" value="<?= isset($data->search_text) ? $data->search_text : '' ?>" />
             <button><img data-src="/assets/img/search-icon.svg" alt="" /></button>
         </form>
       </div>
@@ -93,7 +93,7 @@ $og = setMetas($messages, 'detail_', ['title' => $data->book->title, 'descriptio
                         <a href="<?= $book->path ?>">
                             <div>
                             <div><?= $book->title?></div>
-                            <p><?= strip_tags($book->description) ?></p>
+                            <p><?=$book->description ?></p>
                             </div>
                             <img data-src="/assets/img/1.jpg" />
                         </a>

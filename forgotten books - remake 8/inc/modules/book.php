@@ -12,7 +12,7 @@ class Book
         
         $this->path = $this->path();
         $this->title = mb_convert_encoding($this->title, 'UTF-8', 'UTF-8');
-        $this->description = mb_convert_encoding($this->description, 'UTF-8', 'UTF-8');
+        $this->description = mb_convert_encoding(strip_tags($this->description), 'UTF-8', 'UTF-8');
     }
 
     public function path()
