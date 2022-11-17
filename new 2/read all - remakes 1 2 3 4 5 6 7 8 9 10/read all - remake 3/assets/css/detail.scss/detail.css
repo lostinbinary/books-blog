@@ -1,0 +1,285 @@
+.perfectooo-boxes > h1,
+.perfectooo-boxes > h2,
+.perfectooo-boxes > h3,
+.perfectooo-boxes > h4,
+.perfectooo-boxes > h5,
+.perfectooo-boxes > h6 {
+  font-size: 1.6;
+  color: #c30000;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px; }
+.perfectooo-boxes > p {
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 30px; }
+.perfectooo-boxes .perfectooo-iframe-description {
+  display: grid;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #232323;
+  grid-template-columns: 1fr;
+  grid-gap: 30px; }
+  @media (max-width: 920px) {
+    .perfectooo-boxes .perfectooo-iframe-description {
+      grid-template-columns: 1fr; } }
+  .perfectooo-boxes .perfectooo-iframe-description * {
+    color: #fff; }
+  .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe {
+    position: relative; }
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > h1,
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > h2,
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > h3,
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > h4,
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > h5,
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > h6 {
+      font-size: 1.7rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 15px; }
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > p {
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 30px; }
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > div:not(.perfectooo-staff) {
+      background-color: #333;
+      position: relative; }
+      .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > div:not(.perfectooo-staff) iframe {
+        height: 800px;
+        max-height: 80vh;
+        width: 100%; }
+      .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > div:not(.perfectooo-staff) > div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+        .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > div:not(.perfectooo-staff) > div > div {
+          cursor: pointer;
+          position: relative; }
+          .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > div:not(.perfectooo-staff) > div > div > span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            font-size: 1.1rem;
+            padding: 7px 15px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); }
+            .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > div:not(.perfectooo-staff) > div > div > span img {
+              filter: invert(1);
+              width: 20px; }
+      .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > div:not(.perfectooo-staff) > span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background-color: #333;
+        z-index: 9; }
+        .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > div:not(.perfectooo-staff) > span > div {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+          .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > div:not(.perfectooo-staff) > span > div > span {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border-left: 5px solid #fff;
+            border-top: 5px solid #fff;
+            transition: 0.2s ease-in-out;
+            animation-name: rotate;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite; }
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-iframe > p {
+      line-height: 1.7; }
+  .perfectooo-boxes .perfectooo-iframe-description .perfectooo-description {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px; }
+    @media (max-width: 920px) {
+      .perfectooo-boxes .perfectooo-iframe-description .perfectooo-description {
+        order: 1; } }
+    .perfectooo-boxes .perfectooo-iframe-description .perfectooo-description > div {
+      margin-bottom: 15px; }
+      .perfectooo-boxes .perfectooo-iframe-description .perfectooo-description > div > span {
+        font-weight: bold;
+        font-size: 1.05rem;
+        display: block;
+        margin-bottom: 7px; }
+      .perfectooo-boxes .perfectooo-iframe-description .perfectooo-description > div > div {
+        font-size: 0.95rem; }
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(360deg); }
+  100% {
+    transform: rotateZ(0); } }
+.perfectooo-iframe-btn {
+  z-index: 5; }
+
+.perfectooo-container > div:not(.perfectooo-boxes) {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 240px 1fr; }
+  @media (max-width: 920px) {
+    .perfectooo-container > div:not(.perfectooo-boxes) {
+      grid-template-columns: 1fr; } }
+  .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions {
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-self: flex-start; }
+    .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > h1,
+    .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > h2,
+    .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > h3,
+    .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > h4,
+    .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > h5,
+    .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > h6 {
+      font-size: 1.3rem; }
+    .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > p {
+      line-height: 1.7;
+      padding-bottom: 20px; }
+    .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > span {
+      display: inline-flex;
+      height: 295px;
+      width: 100%;
+      background-color: #000;
+      position: relative; }
+      .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > span > span {
+        display: inline-block;
+        background-color: #683a82;
+        color: #fff;
+        border-radius: 5px;
+        padding: 7px 15px;
+        cursor: pointer;
+        position: absolute;
+        font-size: 1.125rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+        .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > span > span img {
+          width: 50px;
+          filter: invert(1); }
+      .perfectooo-container > div:not(.perfectooo-boxes) .perfectooo-descriptions > span img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center; }
+
+.perfectooo-staff {
+  margin: 40px 0;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px; }
+  .perfectooo-staff > h1,
+  .perfectooo-staff > h2,
+  .perfectooo-staff > h3,
+  .perfectooo-staff > h4,
+  .perfectooo-staff > h5,
+  .perfectooo-staff > h6 {
+    font-size: 1.3rem; }
+  .perfectooo-staff > p {
+    line-height: 1.7;
+    border-bottom: 1px solid #edeff7;
+    padding-bottom: 20px; }
+  .perfectooo-staff ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; }
+    .perfectooo-staff ul li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap; }
+      .perfectooo-staff ul li > a {
+        background-color: #683a82;
+        color: #333;
+        padding: 3px;
+        display: inline-block;
+        border-radius: 3px;
+        font-size: 0.7rem; }
+      .perfectooo-staff ul li strong {
+        font-weight: bold; }
+      .perfectooo-staff ul li::before {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background-color: #2a353b;
+        margin-right: 7px;
+        content: "";
+        border-radius: 50%; }
+
+.perfectooo-staff-text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  line-height: 1.5;
+  font-size: 15px; }
+  .perfectooo-staff-text > div {
+    max-height: 205px;
+    overflow: hidden; }
+
+.perfectooo-staff-text.active > div {
+  max-height: inherit !important; }
+
+.perfectooo-less-more {
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-family: bold;
+  width: 100%;
+  color: #333;
+  background-color: #683a82;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: 5px; }
+
+.perfectooo-keys {
+  border-radius: 3px;
+  order: -1; }
+  @media (max-width: 920px) {
+    .perfectooo-keys {
+      order: 1; } }
+  .perfectooo-keys ul {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    flex-wrap: wrap; }
+    .perfectooo-keys ul li {
+      flex-grow: 1;
+      min-width: 120px;
+      border-left: 2px solid #fff;
+      border-right: 2px solid #fff; }
+      .perfectooo-keys ul li a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 8px;
+        width: 100%;
+        border-radius: 5px;
+        background-color: #683a82;
+        color: #fff;
+        font-size: 0.9rem;
+        gap: 7px;
+        transition: 0.2s ease-in-out; }
+        .perfectooo-keys ul li a img {
+          width: 25px;
+          filter: invert(1); }
+
+/*# sourceMappingURL=detail.css.map */

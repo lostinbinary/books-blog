@@ -1,0 +1,300 @@
+.dubissttt-boxes {
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    font-size: 1.6;
+    color: #c30000;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  > p {
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 30px;
+  }
+
+  .dubissttt-iframe-description {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    @media (max-width: 920px) {
+      grid-template-columns: 1fr;
+    }
+    .dubissttt-iframe {
+      position: relative;
+      background-color: #f1f1f1;
+      > div:not(.dubissttt-staff) {
+        background-color: #333;
+        position: relative;
+        iframe {
+          // border: none;
+          height: 800px;
+          max-height: 80vh;
+          width: 100%;
+        }
+        > div {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          > div {
+            cursor: pointer;
+            position: relative;
+            > img {
+            }
+            > span {
+              display: inline-flex;
+              justify-content: center;
+              align-items: center;
+              color: #fff;
+              background-color: rgba(0, 0, 0, 0.7);
+              font-size: 1.1rem;
+              padding: 7px 15px;
+              border-radius: 10px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              img {
+                filter: invert(1);
+                width: 20px;
+              }
+            }
+          }
+        }
+        > span {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          display: none;
+          background-color: #333;
+          z-index: 9;
+          > div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > span {
+              display: inline-block;
+              width: 70px;
+              height: 70px;
+              border-radius: 50%;
+              border-left: 5px solid #fff;
+              border-top: 5px solid #fff;
+              transition: 0.2s ease-in-out;
+              animation-name: rotate;
+              animation-duration: 0.5s;
+              animation-timing-function: linear;
+              animation-iteration-count: infinite;
+            }
+          }
+        }
+      }
+      > p {
+        line-height: 1.7;
+      }
+    }
+    .dubissttt-description {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 40px;
+      @media (max-width: 920px) {
+        order: 1;
+      }
+      > div {
+        margin-bottom: 15px;
+        > span {
+          font-weight: bold;
+          font-size: 1.05rem;
+          display: block;
+          margin-bottom: 7px;
+        }
+        > div {
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotateZ(360deg);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+.dubissttt-iframe-btn {
+  z-index: 5;
+}
+
+.dubissttt-container {
+  > div:not(.dubissttt-boxes) {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr 270px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    @media (max-width: 920px) {
+      grid-template-columns: 1fr;
+    }
+    .dubissttt-descriptions {
+      // order: -1;
+      border-style: solid;
+      border-width: 2px;
+      border-color: rgb(237, 239, 247);
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      margin-bottom: 30px;
+      padding: 10px;
+      display: flex;
+      border-bottom: 3px solid #333;
+      flex-direction: column;
+      gap: 15px;
+      align-self: flex-start;
+      @media (max-width: 920px) {
+        order: -1;
+      }
+      > h1,
+      > h2,
+      > h3,
+      > h4,
+      > h5,
+      > h6 {
+        font-size: 1.3rem;
+      }
+      > p {
+        line-height: 1.7;
+        padding-bottom: 20px;
+      }
+      > span {
+        display: inline-flex;
+        height: 295px;
+        width: 100%;
+        background-color: #333;
+        position: relative;
+        > span {
+          display: inline-block;
+          background-color: #3333339c;
+          color: #fff;
+          border-radius: 5px;
+          padding: 7px 15px;
+          cursor: pointer;
+          position: absolute;
+          font-size: 1.125rem;
+          top: 50%;
+          height: 100%;
+          // border-radius: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          img {
+            width: 50px;
+            filter: invert(1);
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+  }
+}
+
+.dubissttt-staff {
+  margin: 30px 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(237, 239, 247);
+  border-radius: 5px;
+  background-color: rgba(42, 53, 59, 0);
+  margin-bottom: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    font-size: 1.3rem;
+  }
+  > p {
+    line-height: 1.7;
+    border-bottom: 1px solid rgb(237, 239, 247);
+    padding-bottom: 20px;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      > a {
+        background-color: #ff3737b3;
+        color: #fff;
+        padding: 3px;
+        display: inline-block;
+        border-radius: 3px;
+        font-size: 0.7rem;
+      }
+      strong {
+        font-weight: bold;
+      }
+      &::before {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background-color: rgba(42, 53, 59, 1);
+        margin-right: 7px;
+        content: "";
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.dubissttt-staff-text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  line-height: 1.5;
+  font-size: 15px;
+  > div {
+    max-height: 205px;
+    overflow: hidden;
+  }
+}
+.dubissttt-staff-text.active {
+  > div {
+    max-height: inherit !important;
+  }
+}
+.dubissttt-less-more {
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-family: bold;
+  color: #333;
+  background-color: #ff3737b3;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: 5px;
+}

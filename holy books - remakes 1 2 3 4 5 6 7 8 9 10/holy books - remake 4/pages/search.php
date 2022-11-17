@@ -23,7 +23,6 @@ if ($cache->isCached()) {
     // get books
     $data->books = $db_handle->get_query("SELECT * FROM ".get_env('TABLE_LINKS')." 
         $WHERE
-        ORDER BY id DESC 
         LIMIT {$data->pagination->offset}, {$data->pagination->limit}",[$data->search_text]);
         
     foreach($data->books as &$book)
@@ -39,7 +38,7 @@ if ($cache->isCached()) {
 
 }
 set_metas('search','{search_text}',$data->search_text,$messages);
-if($data->pagination->page > 1) set_metas('search','{page}',$data->pagination->page,$messages);
+if($data->pagination->page > 1) set_metas('search','{page}',' '.$data->pagination->page,$messages);
 else set_metas('search','{page}','',$messages);
 
 ?>

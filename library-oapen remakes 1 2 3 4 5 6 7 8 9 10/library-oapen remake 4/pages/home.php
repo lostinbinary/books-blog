@@ -31,7 +31,7 @@ if ($cache->isCached()) {
 
     $cache->set($data);
 }
-if($data->pagination->page > 1) set_metas('index','{page}',$data->pagination->page,$messages);
+if($data->pagination->page > 1) set_metas('index','{page}',' '.$data->pagination->page,$messages);
 else set_metas('index','{page}','',$messages);
 
 ?>

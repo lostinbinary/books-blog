@@ -1,0 +1,256 @@
+.tschusss-boxes > h1,
+.tschusss-boxes > h2,
+.tschusss-boxes > h3,
+.tschusss-boxes > h4,
+.tschusss-boxes > h5,
+.tschusss-boxes > h6 {
+  font-size: 1.6;
+  color: #c30000;
+  font-weight: bold;
+  margin-bottom: 30px; }
+.tschusss-boxes > p {
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 30px; }
+.tschusss-boxes .tschusss-iframe-description {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px; }
+  @media (max-width: 920px) {
+    .tschusss-boxes .tschusss-iframe-description {
+      grid-template-columns: 1fr; } }
+  .tschusss-boxes .tschusss-iframe-description .tschusss-iframe {
+    position: relative;
+    background-color: #f1f1f1; }
+    .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > div:not(.tschusss-staff) {
+      background-color: #333;
+      position: relative; }
+      .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > div:not(.tschusss-staff) iframe {
+        height: 800px;
+        max-height: 80vh;
+        width: 100%; }
+      .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > div:not(.tschusss-staff) > div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+        .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > div:not(.tschusss-staff) > div > div {
+          cursor: pointer;
+          position: relative; }
+          .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > div:not(.tschusss-staff) > div > div > span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            font-size: 1.1rem;
+            padding: 7px 15px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); }
+            .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > div:not(.tschusss-staff) > div > div > span img {
+              filter: invert(1);
+              width: 20px; }
+      .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > div:not(.tschusss-staff) > span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background-color: #333;
+        z-index: 9; }
+        .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > div:not(.tschusss-staff) > span > div {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+          .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > div:not(.tschusss-staff) > span > div > span {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border-left: 5px solid #fff;
+            border-top: 5px solid #fff;
+            transition: 0.2s ease-in-out;
+            animation-name: rotate;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite; }
+    .tschusss-boxes .tschusss-iframe-description .tschusss-iframe > p {
+      line-height: 1.7; }
+  .tschusss-boxes .tschusss-iframe-description .tschusss-description {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px; }
+    @media (max-width: 920px) {
+      .tschusss-boxes .tschusss-iframe-description .tschusss-description {
+        order: 1; } }
+    .tschusss-boxes .tschusss-iframe-description .tschusss-description > div {
+      margin-bottom: 15px; }
+      .tschusss-boxes .tschusss-iframe-description .tschusss-description > div > span {
+        font-weight: bold;
+        font-size: 1.05rem;
+        display: block;
+        margin-bottom: 7px; }
+      .tschusss-boxes .tschusss-iframe-description .tschusss-description > div > div {
+        font-size: 0.95rem; }
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(360deg); }
+  100% {
+    transform: rotateZ(0); } }
+.tschusss-iframe-btn {
+  z-index: 5; }
+
+.tschusss-container > div:not(.tschusss-boxes) {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 420px 1fr;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc; }
+  @media (max-width: 920px) {
+    .tschusss-container > div:not(.tschusss-boxes) {
+      grid-template-columns: 1fr; } }
+  .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #edeff7;
+    border-radius: 5px;
+    background-color: #333;
+    margin-bottom: 30px;
+    padding: 10px;
+    display: flex;
+    border-bottom: 3px solid #333;
+    flex-direction: column;
+    gap: 15px;
+    align-self: flex-start;
+    order: -1; }
+    @media (max-width: 920px) {
+      .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions {
+        order: -1; } }
+    .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions * {
+      color: #fff; }
+    .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > h1,
+    .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > h2,
+    .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > h3,
+    .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > h4,
+    .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > h5,
+    .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > h6 {
+      font-size: 1.3rem; }
+    .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > p {
+      line-height: 1.7;
+      padding-bottom: 20px; }
+    .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > span {
+      display: inline-flex;
+      height: 295px;
+      width: 100%;
+      background-color: #333;
+      position: relative; }
+      .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > span > span {
+        display: inline-block;
+        background-color: rgba(51, 51, 51, 0.644);
+        color: #fff;
+        border-radius: 5px;
+        padding: 7px 15px;
+        cursor: pointer;
+        position: absolute;
+        font-size: 1.125rem;
+        top: 50%;
+        text-align: center;
+        width: 40%;
+        height: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+        .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > span > span img {
+          width: 50px;
+          filter: invert(1); }
+      .tschusss-container > div:not(.tschusss-boxes) .tschusss-descriptions > span img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center; }
+
+.tschusss-staff {
+  margin: 30px 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #edeff7;
+  border-radius: 5px;
+  background-color: rgba(42, 53, 59, 0);
+  margin-bottom: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px; }
+  .tschusss-staff > h1,
+  .tschusss-staff > h2,
+  .tschusss-staff > h3,
+  .tschusss-staff > h4,
+  .tschusss-staff > h5,
+  .tschusss-staff > h6 {
+    font-size: 1.3rem; }
+  .tschusss-staff > p {
+    line-height: 1.7;
+    border-bottom: 1px solid #edeff7;
+    padding-bottom: 20px; }
+  .tschusss-staff ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; }
+    .tschusss-staff ul li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap; }
+      .tschusss-staff ul li > a {
+        background-color: #b5fff0;
+        color: #fff;
+        padding: 3px;
+        display: inline-block;
+        border-radius: 3px;
+        font-size: 0.7rem; }
+      .tschusss-staff ul li strong {
+        font-weight: bold; }
+      .tschusss-staff ul li::before {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background-color: #2a353b;
+        margin-right: 7px;
+        content: "";
+        border-radius: 50%; }
+
+.tschusss-staff-text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  line-height: 1.5;
+  font-size: 15px; }
+  .tschusss-staff-text > div {
+    max-height: 205px;
+    overflow: hidden; }
+
+.tschusss-staff-text.active > div {
+  max-height: inherit !important; }
+
+.tschusss-less-more {
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-family: bold;
+  color: #333;
+  background-color: #b5fff0;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: 5px; }
+
+/*# sourceMappingURL=detail.css.map */

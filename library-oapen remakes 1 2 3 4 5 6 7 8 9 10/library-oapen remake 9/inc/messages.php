@@ -118,6 +118,8 @@ $messages = [
             </div>
         </div>',
     'footer' => ' © 2022 HolyBooks.com - download free PDF e-books • Built with GeneratePress',
+    'copyright' => 'Copyright © 2022. Designed by ',
+    'footer_menu' => '<a href="/privacy">Privacy Policy</a><a href="/contact">Contact</a>',
 
     'detail_title' => '{title}',
     'detail_description' => '{description}',
